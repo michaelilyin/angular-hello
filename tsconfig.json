@@ -15,6 +15,10 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@app-shared/*": ["src/app/shared/*"],
+      "@app-users/*": ["src/app/users/*"]
+    }
   }
 }

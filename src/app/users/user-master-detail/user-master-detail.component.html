@@ -1,0 +1,16 @@
+<div fxLayout="row"
+     fxLayoutAlign="space-around"
+     class="master-detail">
+  <div fxFlex="59"
+       class="master-detail__master-view">
+    <app-user-list #userList
+                   (selectedUser)="selectedUser = $event">
+    </app-user-list>
+  </div>
+  <div fxFlex="39"
+       class="master-detail__detail-view">
+    <app-user-detail [selectedUser]="selectedUser"
+                     (close)="onUserCardClose($event)">
+    </app-user-detail>
+  </div>
+</div>

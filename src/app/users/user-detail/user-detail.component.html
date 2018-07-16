@@ -1,0 +1,27 @@
+<div *ngIf="selectedUser && user; else selectionPrompt">
+  <form class="form"
+        fxLayout="column"
+        fxLayoutAlign="start start">
+    <div class="form__control">
+      <label class="form__label" for="firstName">First name</label>
+      <input id="firstName"
+             name="firstName"
+             [(ngModel)]="user.firstName">
+    </div>
+
+    <div class="form__control">
+      <label class="form__label" for="lastName">Last name</label>
+      <input id="lastName"
+             name="lastName"
+             [(ngModel)]="user.lastName">
+    </div>
+
+    <div>
+      <button class="form__action" (click)="save()">Save</button>
+      <button class="form__action" (click)="cancel()">Cancel</button>
+    </div>
+  </form>
+</div>
+<ng-template #selectionPrompt>
+  Please, select user in master table
+</ng-template>

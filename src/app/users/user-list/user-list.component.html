@@ -1,0 +1,26 @@
+<table class="simple-table">
+  <thead>
+  <tr class="simple-table__head-row">
+    <td class="simple-table__head-cell">Login</td>
+    <td class="simple-table__head-cell">Email</td>
+    <td class="simple-table__head-cell">First name</td>
+    <td class="simple-table__head-cell">Last name</td>
+    <td class="simple-table__head-cell">Aliveness</td>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let user of users$ | async; trackBy: userTrack"
+      class="simple-table__row">
+    <td class="simple-table__cell">
+      <a href="javascript:void(0)"
+         (click)="selectedUser.next(user.id)">
+        {{user.login}}
+      </a>
+    </td>
+    <td class="simple-table__cell">{{user.email}}</td>
+    <td class="simple-table__cell">{{user.firstName | emptyPlaceholder}}</td>
+    <td class="simple-table__cell">{{user.lastName | emptyPlaceholder}}</td>
+    <td class="simple-table__cell">{{user.alive | aliveness | emptyPlaceholder}}</td>
+  </tr>
+  </tbody>
+</table>

@@ -1,0 +1,13 @@
+.form {
+  &__control {
+    padding: 5px;
+  }
+
+  &__label {
+    padding: 5px;
+  }
+
+  &__action:not(:last-of-type) {
+    margin-right: 5px;
+  }
+}
