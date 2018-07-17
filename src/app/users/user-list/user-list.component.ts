@@ -1,6 +1,7 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {User, UsersService} from '@app-users/services/users.service';
 import {Observable} from 'rxjs/internal/Observable';
+import {tap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-user-list',
@@ -13,6 +14,7 @@ export class UserListComponent implements OnInit {
   public selectedUser = new EventEmitter<number>();
 
   public users$: Observable<User[]>;
+  public isLoad: boolean = false;
 
   constructor(private userService: UsersService) {
   }
@@ -26,7 +28,14 @@ export class UserListComponent implements OnInit {
   }
 
   refresh() {
-    this.users$ = this.userService.getAllUsers();
+    this.isLoad = true;
+    this.users$ = this.userService.getAllUsers()
+      .pipe(
+        tap(() => {
+          console.info('load complete');
+          this.isLoad = false;
+        })
+      );
   }
 
 }

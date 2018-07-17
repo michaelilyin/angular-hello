@@ -15,6 +15,7 @@ export class UserDetailComponent implements OnInit, OnChanges {
   public close = new EventEmitter<boolean>();
 
   public user: User;
+  public isSaving: boolean = false;
 
   constructor(private usersService: UsersService) { }
 
@@ -35,7 +36,9 @@ export class UserDetailComponent implements OnInit, OnChanges {
   }
 
   save() {
+    this.isSaving = true;
     this.usersService.save(this.user).subscribe(() => {
+      this.isSaving = false;
       this.close.next(true);
     });
   }
